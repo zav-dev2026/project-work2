@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Shop;
+use App\Http\Resources\ShopResource;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ShopController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    /** GetAllShops */
+    public function index(): AnonymousResourceCollection
     {
-        //
+        $shops = Shop::all();
+
+        return ShopResource::collection($shops);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    /** GetShopByIdWithProducts */
+    public function show(int $id): ShopResource
     {
-        //
+        $shop = Shop::with('products')->findOrFail($id);
+
+        return new ShopResource($shop);
     }
 }
