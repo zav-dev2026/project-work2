@@ -7,7 +7,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Shop extends Model
 {
-    public function shops(): HasMany
+    protected $fillable = [
+        'name',
+        'image_url',
+        'address',
+        'phone_number'
+    ];
+
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class);
     }
