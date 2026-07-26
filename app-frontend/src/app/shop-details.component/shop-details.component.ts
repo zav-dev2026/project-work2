@@ -14,6 +14,12 @@ import { ActivatedRoute } from '@angular/router';
           <h5 class="card-title">{{ shop.name }}</h5>
         </div>
       </div>
+
+      @for (product of productList; track product.id) {
+        <div class="col">
+          <app-product [product]="product"></app-product>
+        </div>
+      }
     }
   `,
   styleUrl: './shop-details.component.css',
