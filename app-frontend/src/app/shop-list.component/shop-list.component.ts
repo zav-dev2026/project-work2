@@ -6,15 +6,17 @@ import { ShopService } from '../shop-service';
   selector: 'app-shop-list',
   standalone: false,
   template: `
-    @if (shopList.length > 0) {
-      <div class="row g-4">
-        @for (shop of shopList; track shop.id) {
-          <div class="col">
-            <app-shop [shop]="shop"></app-shop>
-          </div>
-        }
-      </div>
-    }
+    <div class="container py-4">
+      @if (shopList.length > 0) {
+        <div class="row g-4">
+          @for (shop of shopList; track shop.id) {
+            <div class="col-12 col-md-6 col-lg-4">
+              <app-shop [shop]="shop"></app-shop>
+            </div>
+          }
+        </div>
+      }
+    </div>
   `,
   styleUrl: './shop-list.component.css',
 })

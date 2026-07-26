@@ -11,9 +11,17 @@ import { ShopComponent } from './shop.component/shop.component';
 import { ShopListComponent } from './shop-list.component/shop-list.component';
 import { ShopDetailsComponent } from './shop-details.component/shop-details.component';
 import { ProductComponent } from './product.component/product.component';
+import { NavComponent } from './nav-component/nav-component';
 
 @NgModule({
-  declarations: [App, ShopComponent, ShopListComponent, ShopDetailsComponent, ProductComponent],
+  declarations: [
+    App,
+    ShopComponent,
+    ShopListComponent,
+    ShopDetailsComponent,
+    ProductComponent,
+    NavComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [
     provideBrowserGlobalErrorListeners(),

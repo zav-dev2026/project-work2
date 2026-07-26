@@ -7,20 +7,41 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-shop-details',
   standalone: false,
   template: `
-    @if (shop) {
-      <div class="card" style="width: 18rem;">
-        <img src="{{ shop.image_url }}" class="card-img-top" />
-        <div class="card-body">
-          <h5 class="card-title">{{ shop.name }}</h5>
-        </div>
-      </div>
+    <div class="container-fluid px-5 py-4">
+      @if (shop) {
+        <div class="card shadow-sm mb-4">
+          <div class="card-body text-center">
+            <h2 class="card-title mb-4">{{ shop.name }}</h2>
 
-      @for (product of productList; track product.id) {
-        <div class="col">
-          <app-product [product]="product"></app-product>
+            <img
+              src="{{ shop.image_url }}"
+              class="rounded w-100"
+              style="height: 250px; object-fit: cover"
+            />
+            <div class="text-start">
+              <p class="mb-2 text-muted">
+                <strong>Indirizzo:</strong>
+                {{ shop.address }}
+              </p>
+
+              <p class="mb-0 text-muted">
+                <strong>Telefono:</strong>
+                {{ shop.phone_number }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="mb-3 text-center">Prodotti</h2>
+        <div class="d-flex flex-column gap-3">
+          @for (product of productList; track product.id) {
+            <div class="col">
+              <app-product [product]="product"></app-product>
+            </div>
+          }
         </div>
       }
-    }
+    </div>
   `,
   styleUrl: './shop-details.component.css',
 })
