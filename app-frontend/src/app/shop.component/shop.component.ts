@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ShopDTO } from '../models';
+import { Shop } from '../models';
 
 @Component({
   selector: 'app-shop',
@@ -19,5 +19,5 @@ import { ShopDTO } from '../models';
   styleUrl: './shop.component.css',
 })
 export class ShopComponent {
-  @Input() shop: ShopDTO | null = null;
+  @Input() shop: Shop | null = null;
 }

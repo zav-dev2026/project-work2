@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ShopDTO } from './models';
+import { Shop, ShopDetails, ShopDetailsDTO, ShopDTO } from './models';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({
@@ -16,11 +16,23 @@ export class ShopService {
 
   constructor(private http: HttpClient) {}
 
-  getAllShops(): Promise<ShopDTO[]> {
-    return firstValueFrom(this.http.get<ShopDTO[]>(`${this.baseUrl}/shops`));
+  /**
+   * La risposta del backend non è un array ma un oggetto contenente l'array
+   * Ho dichiarato un modello corrispondente alla risposta per estarne il contenuto
+   * con la proprietà .data
+   */
+
+  async getAllShops(): Promise<Shop[]> {
+    const result = await firstValueFrom(this.http.get<ShopDTO>(`${this.baseUrl}/shops`));
+
+    return result.data;
   }
 
-  getShopByIdWithProducts(shopId: string): Promise<ShopDTO> {
-    return firstValueFrom(this.http.get<ShopDTO>(`${this.baseUrl}/shops/${shopId}`));
+  async getShopByIdWithProducts(shopId: string): Promise<ShopDetails> {
+    const result = await firstValueFrom(
+      this.http.get<ShopDetailsDTO>(`${this.baseUrl}/shops/${shopId}`),
+    );
+
+    return result.data;
   }
 }

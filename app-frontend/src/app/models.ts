@@ -1,13 +1,29 @@
-export interface ShopDTO {
+export interface Shop {
   id: number;
   name: string;
   image_url: string;
   address: string;
   phone_number: string;
-  products: ProductDTO[];
 }
 
-export interface ProductDTO {
+export interface ShopDTO {
+  data: Shop[];
+}
+
+export interface ShopDetailsDTO {
+  data: ShopDetails;
+}
+
+export interface ShopDetails {
+  id: number;
+  name: string;
+  image_url: string;
+  address: string;
+  phone_number: string;
+  products: Product[];
+}
+
+export interface Product {
   id: number;
   shop_id: number;
   name: string;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductDTO, ShopDTO } from '../models';
+import { Product, ShopDetails } from '../models';
 import { ShopService } from '../shop-service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -31,8 +31,8 @@ export class ShopDetailsComponent implements OnInit {
    * per avere valore semantico all'interno del template
    * ed aggiungere chiarezza
    */
-  shop: ShopDTO | null = null;
-  productList: ProductDTO[] = [];
+  shop: ShopDetails | null = null;
+  productList: Product[] = [];
 
   constructor(
     private shopService: ShopService,
