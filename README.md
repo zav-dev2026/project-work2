@@ -133,6 +133,64 @@ il modello DTO del backend e poter popolare le proprietà dei
 componenti che vogliamo usare nel template come anche il tipo
 di ritorno nel nostro servizio che chiama l'API.
 
+## Comandi utilizzati per lo sviluppo
+
+Creazione del progetto backend da cli
+
+```bash
+composer create-project laravel/laravel app-backend
+```
+
+Per coerenza con l'ambiente di sviluppo disponibile si può forzare la versione 12.12.2
+
+```bash
+composer create-project laravel/laravel:12.12.2 {nome-app}
+```
+
+Setup del file .env
+
+Creazione dei modelli con flag che il relativo file di migration
+
+```bash
+php artisan make:model {Nome modello} -m
+```
+
+(Definire la relazione all'interno del modello)
+
+Aggiunta della rotta api col seguente comando
+
+```bash
+php artisan install:api
+```
+
+Aggiunta dei controller api
+
+```bash
+php artisan make:controller Api/{Nome}Controller --api
+```
+
+Creazione delle api resource (DTO)
+
+```bash
+php artisan make:resource {Nome}Resource
+```
+
+Creazione di database seeder
+
+```bash
+php artisan make:seeder {Nome}Seeder
+```
+
+Nota: per utilizzare il seeder, bisogna dichiare le proprietà
+all'interno del modello nell'array $fillable, affinchè
+il framework non ne prevenga il popolamento
+
+Lancio del seeder, con migrazione da zero
+
+```bash
+php artisan migrate:fresh --seed
+```
+
 # Scelte progettuali
 
 ### Angular
